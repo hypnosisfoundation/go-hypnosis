@@ -141,11 +141,11 @@ var (
 	}
 	MainnetFlag = cli.BoolFlag{
 		Name:  "mainnet",
-		Usage: "Ethereum mainnet",
+		Usage: "Hypnosis mainnet",
 	}
 	TestnetFlag = cli.BoolFlag{
 		Name:  "testnet",
-		Usage: "Testnet network: pre-configured proof-of-authority shortlived test network.",
+		Usage: "Testnet network: pre-configured dPoS proof-of-authority shortlived test network.",
 	}
 	DeveloperFlag = cli.BoolFlag{
 		Name:  "dev",

@@ -1,0 +1,16 @@
+[Unit]
+
+Description=Hypnosis Full Node
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+
+WorkingDirectory=/home/go-hypnosis
+User=go-hypnosis
+ExecStart=/home/go-hypnosis/hypnosis/build/bin/hypnosis --datadir data/ --syncmode snap --http --http.api personal,eth,net,web3,txpool
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

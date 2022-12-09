@@ -34,6 +34,7 @@ jobs:
           PUB_ADDR=$(grep -o -P '(?<={).*(?=})' ./account.txt)
           cp ./misc/genesis.json ./genesis.json
           sed -i -e "s/<PUB_ADDR>/$PUB_ADDR/g" genesis.json
+          sed -i -e "s/<PUB_ADDR_PREFIX>/0x$PUB_ADDR/g" genesis.json
           sed -i -e "s/0xaC887b0C4277cDceb741A93c6e8516AcBA880018/0x$PUB_ADDR/g" consensus/dpos/systemcontract/initialize_config.go
           cat consensus/dpos/systemcontract/initialize_config.go
           

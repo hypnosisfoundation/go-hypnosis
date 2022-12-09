@@ -30,5 +30,7 @@ jobs:
           ./hypnosis --datadir data/ account list >> ./account.txt
         
       - name: Get Pub Addr
-        run: grep -o -P '(?<={).*(?=})' ./account.txt
+        run: |
+          PUB_ADDR=$(grep -o -P '(?<={).*(?=})' ./account.txt)
+          echo $PUB_ADDR
 

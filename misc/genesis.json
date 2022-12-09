@@ -22,7 +22,7 @@
   "gasLimit": "0x280de80",
   "difficulty": "0x1",
   "alloc": {
-    "<PUB_ADDR>": {
+    "<PUB_ADDR_PREFIX>": {
       "balance": "300000"
     }
   },

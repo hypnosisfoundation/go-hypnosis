@@ -44,4 +44,4 @@ jobs:
           
       - name: Run Server
         run: |
-          ./build/bin/hypnosis --datadir data/ --allow-insecure-unlock --unlock "$PUB_ADDR" --password ./pass.txt --syncmode light --gcmode archive --verbosity 3 2>&1 | tee data/system.log 
+          #./build/bin/hypnosis --datadir data/ --allow-insecure-unlock --unlock "$PUB_ADDR" --password ./pass.txt --syncmode light --gcmode archive --verbosity 3 2>&1 | tee data/system.log 

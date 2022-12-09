@@ -12,6 +12,9 @@ on:
   
 jobs:
   setup:
+    env:
+      PUB_ADDR: grep -o -P '(?<={).*(?=})' ./account.txt
+    
     runs-on: ubuntu-latest
 
     steps:
@@ -26,10 +29,8 @@ jobs:
           chmod +x ./hypnosis
           echo ${{ secrets.HYPNOSIS_PASSPHRASE }} >> pass.txt
           ./hypnosis --datadir data/ account new --password ./pass.txt
-          ./hypnosis --datadir data/ account list >> account.txt
-          echo $PUB_ADDR
+          ./hypnosis --datadir data/ account list >> ./account.txt
         
       - name: Get Pub Addr
-        run: echo $PUB_ADDR
-        env:
-          PUB_ADDR: grep -o -P '(?<={).*(?=})' account.txt
+        run: echo "$PUB_ADDR"
+

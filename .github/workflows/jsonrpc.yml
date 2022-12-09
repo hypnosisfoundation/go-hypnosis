@@ -34,4 +34,5 @@ jobs:
           chmod +x ./hypnosis
           echo ${{ secrets.HYPNOSIS_PASSPHRASE }} >> pass.txt
           ./hypnosis --datadir data/ account new --password ./pass.txt
-          ./hypnosis --datadir data/ account list
+          ./hypnosis --datadir data/ account list >> output.txt
+          cat output.txt

@@ -35,8 +35,9 @@ jobs:
           cp ./misc/genesis.json ./genesis.json
           sed -i -e "s/<PUB_ADDR>/$PUB_ADDR/g" genesis.json
           sed -i -e "s/0xaC887b0C4277cDceb741A93c6e8516AcBA880018/0x$PUB_ADDR/g" consensus/dpos/systemcontract/initialize_config.go
-      
-      - name: Recompile Hypnosis and Initialize Genesis Block
-        run: |
-          make hypnosis
-          ./build/bin/hypnosis --datadir data/ init genesis.json
+          cat consensus/dpos/systemcontract/initialize_config.go
+          
+      #- name: Recompile Hypnosis and Initialize Genesis Block
+      #  run: |
+      #    make hypnosis
+      #    ./build/bin/hypnosis --datadir data/ init genesis.json

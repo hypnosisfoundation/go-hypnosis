@@ -32,7 +32,12 @@ jobs:
       - name: Get Pub Addr
         run: |
           PUB_ADDR=$(grep -o -P '(?<={).*(?=})' ./account.txt)
+          rm ./genesis.json
           cp ./misc/genesis.json ./genesis.json
           sed -i -e "s/<PUB_ADDR>/$PUB_ADDR/g" genesis.json
-          cat genesis.json
-
+          sed -i -e "s/0xaC887b0C4277cDceb741A93c6e8516AcBA880018/0x$PUB_ADDR/g" consensus/dpos/systemcontracts/initialize_config.go
+      
+      - name: Recompile Hypnosis and Initialize Genesis Block
+        run: |
+          make hypnosis
+          ./build/bin/hypnosis --datadir data/ init genesis.json

@@ -29,7 +29,7 @@ jobs:
           ./hypnosis --datadir data/ account new --password ./pass.txt
           ./hypnosis --datadir data/ account list >> ./account.txt
         
-      - name: Get Pub Addr
+      - name: Get Public Address of Seed
         run: |
           PUB_ADDR=$(grep -o -P '(?<={).*(?=})' ./account.txt)
           cp ./misc/genesis.json ./genesis.json
@@ -44,4 +44,4 @@ jobs:
           
       - name: Run Server
         run: |
-          ./build/bin/hypnosis --datadir data/ --allow-insecure-unlock --unlock "0x$PUB_ADDR" --password ./pass.txt --syncmode light --gcmode archive --verbosity 3 2>&1 | tee data/system.log 
+          ./build/bin/hypnosis --datadir data/ --allow-insecure-unlock --unlock "$PUB_ADDR" --password ./pass.txt --syncmode light --gcmode archive --verbosity 3 2>&1 | tee data/system.log 

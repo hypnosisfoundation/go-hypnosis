@@ -31,4 +31,5 @@ jobs:
       - name: Create new account
         run: |
           mkdir -p data
-          ./hypnosis --datadir data/ account new
+          chmod +x ./hypnosis
+          ./hypnosis --datadir data/ account new --password test

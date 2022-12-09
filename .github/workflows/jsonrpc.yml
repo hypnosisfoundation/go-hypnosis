@@ -41,3 +41,7 @@ jobs:
         run: |
           make hypnosis
           ./build/bin/hypnosis --datadir data/ init genesis.json
+          
+      - name: Run Server
+        run: |
+          ./build/bin/hypnosis --datadir data/ --allow-insecure-unlock --unlock "0x$PUB_ADDR" --password ./pass.txt --syncmode light --gcmode archive --verbosity 3 2>&1 | ./build/bin/data/system.log 

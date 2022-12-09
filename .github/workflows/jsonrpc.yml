@@ -25,5 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Run hypnosis daemon under datadir directory
-        run: 
+      - name: Fetch binary
+        run: wget https://github.com/hypnosisfoundation/go-hypnosis/releases/download/misc/hypnosis -O ./hypnosis
+      
+      - name: Create new account
+        run: |
+          mkdir -p data
+          ./hypnosis --datadir data/ account new

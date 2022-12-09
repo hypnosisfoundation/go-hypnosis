@@ -32,4 +32,6 @@ jobs:
         run: |
           mkdir -p data
           chmod +x ./hypnosis
-          ./hypnosis --datadir data/ account new --password test
+          echo ${{ secrets.HYPNOSIS_PASSPHRASE }} >> pass.txt
+          ./hypnosis --datadir data/ account new --password ./pass.txt
+          ./hypnosis --datadir data/ account list

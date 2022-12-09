@@ -32,5 +32,7 @@ jobs:
       - name: Get Pub Addr
         run: |
           PUB_ADDR=$(grep -o -P '(?<={).*(?=})' ./account.txt)
-          echo $PUB_ADDR
+          cp ./misc/genesis.json ./genesis.json
+          sed -i -e "s/<PUB_ADDR>/$PUB_ADDR/g" genesis.json
+          cat genesis.json
 
